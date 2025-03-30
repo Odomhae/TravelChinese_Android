@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">간단통역_중국어</string>
+
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <!--  admob -->
+    <string name="TEST_banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="TEST_fullscreen_video_ad_unit_id">ca-app-pub-3940256099942544/8691691433</string>
+    <string name="TEST_fullscreen_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="TEST_admob_app_id"> ca-app-pub-3940256099942544~3347511713</string>
+
+    <!--<string name="banner_ad_unit_id">ca-app-pub-6320276762321427/4866966147</string>-->
+    <string name="side_menu_1">영사콜센터</string>
+    <string name="side_menu_2">여행경보발령현황</string>
+    <string name="side_menu_3">특별여행경보발령현황</string>
+    <string name="side_menu_4">국가별기본정보</string>
+    <string name="side_menu_5">앱 평점 및 댓글</string>
+    <string name="side_menu_6">- 주의 -</string>
+    <string name="side_menu_7">해외여행정보는</string>
+    <string name="side_menu_8">인터넷 연결됩니다.</string>
+    <string name="side_menu_9">데이터가 발생되니</string>
+    <string name="side_menu_10">주의하세요!!!</string>
+
+
+
+    <!-- 영어번역 Button -->
+    <string name="trans_airport">공항</string>
+    <string name="trans_ipkuk">입국</string>
+    <string name="trans_air">기내</string>
+    <string name="trans_info">안내소</string>
+    <string name="trans_stay">숙소</string>
+    <string name="trans_transpotation">대중\n교통</string>
+    <string name="trans_ask">길 찾기</string>
+    <string name="trans_bank">은행</string>
+    <string name="trans_restaurant">식당</string>
+    <string name="trans_buy">물건\n구입</string>
+    <string name="trans_travel">관광</string>
+    <string name="trans_train">기차</string>
+    <string name="trans_post">우체국</string>
+    <string name="trans_trouble">문제\n발생</string>
+    <string name="trans_sick">병원</string>
+    <string name="trans_etc">기타</string>
+
+</resources>
