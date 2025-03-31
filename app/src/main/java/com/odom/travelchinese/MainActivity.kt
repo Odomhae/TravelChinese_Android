@@ -93,7 +93,7 @@ class MainActivity : ComponentActivity() {
         }
 
         // 광고 초기화
-        initializeAds()
+     //   initializeAds() // todo 250331
 
         setContent {
             TravelChineseTheme {
