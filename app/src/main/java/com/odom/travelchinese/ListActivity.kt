@@ -36,6 +36,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.platform.LocalContext
 import com.odom.travelchinese.ui.theme.TravelChineseTheme
 
@@ -82,7 +83,7 @@ fun ListScreen(koreanList: Array<String>, chineseList: Array<String>) {
 
         ListTopBar(R.drawable.ic_back)
 
-        HorizontalDivider(thickness = 2.dp, color = Black)
+        HorizontalDivider(thickness = 2.dp, color = Blue)
 
         // ListView를 LazyColumn으로 변환
         LazyColumn(
@@ -102,7 +103,7 @@ fun ListScreen(koreanList: Array<String>, chineseList: Array<String>) {
                     }
                 )
 
-                HorizontalDivider(thickness = 2.dp, color = Black)
+                HorizontalDivider(thickness = 2.dp, color = Blue)
             }
 
         }

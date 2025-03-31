@@ -36,11 +36,11 @@
     <string name="trans_air">기내</string>
     <string name="trans_info">안내소</string>
     <string name="trans_stay">숙소</string>
-    <string name="trans_transpotation">대중\n교통</string>
+    <string name="trans_transpotation">교통</string>
     <string name="trans_ask">길 찾기</string>
     <string name="trans_bank">은행</string>
     <string name="trans_restaurant">식당</string>
-    <string name="trans_buy">물건\n구입</string>
+    <string name="trans_buy">결제</string>
     <string name="trans_travel">관광</string>
     <string name="trans_train">기차</string>
     <string name="trans_post">우체국</string>
