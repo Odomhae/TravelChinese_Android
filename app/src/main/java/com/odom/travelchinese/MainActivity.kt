@@ -130,7 +130,7 @@ class MainActivity : ComponentActivity() {
         val adRequest = AdRequest.Builder().build()
         InterstitialAd.load(
             this,
-            getString(R.string.TEST_fullscreen_ad_unit_id),
+            getString(R.string.REAL_fullscreen_ad_unit_id),
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(interstitialAd: InterstitialAd) {
@@ -535,7 +535,7 @@ fun BannerAdView(modifier: Modifier = Modifier) {
         factory = { context ->
             AdView(context).apply {
                 setAdSize(AdSize.BANNER)
-                adUnitId = context.getString(R.string.TEST_banner_ad_unit_id)
+                adUnitId = context.getString(R.string.REAL_banner_ad_unit_id)
                 loadAd(AdRequest.Builder().build())
             }
         },

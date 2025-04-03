@@ -126,14 +126,14 @@ fun SpeakScreen(korean: String, chinese: String) {
                         val result = textToSpeech?.setLanguage(Locale.CHINA)
 
                         if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                            Toast.makeText(context, "ssss", Toast.LENGTH_SHORT).show()
+                   //         Toast.makeText(context, "ssss", Toast.LENGTH_SHORT).show()
                         } else {
                             chinese.let { text ->
                                 textToSpeech?.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
                             }
                         }
                     } else {
-                        Toast.makeText(context, "text", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "현재는 불가합니다..", Toast.LENGTH_SHORT).show()
                     }
                 }
 
