@@ -1,5 +1,6 @@
 package com.odom.travelchinese
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -8,6 +9,7 @@ import android.speech.tts.TextToSpeech
 import android.speech.tts.TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA
 import android.util.Log
 import android.view.WindowInsets
+import android.view.WindowInsetsController
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -36,6 +38,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,7 +48,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.android.gms.tasks.Task
+import com.google.android.play.core.review.ReviewInfo
+import com.google.android.play.core.review.ReviewManagerFactory
 import com.odom.travelchinese.ui.theme.TravelChineseTheme
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 class SpeakActivity : ComponentActivity() {
@@ -56,7 +63,14 @@ class SpeakActivity : ComponentActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) { // Android 15+
             window.decorView.setOnApplyWindowInsetsListener { view, insets ->
                 val statusBarInsets = insets.getInsets(WindowInsets.Type.statusBars())
-                view.setBackgroundColor(getColor(R.color.black))
+                view.setBackgroundColor(getColor(R.color.white))
+
+                // 상태 바 아이콘 색상 변경 (어두운 색상으로 설정)
+                val controller = window.insetsController
+                controller?.setSystemBarsAppearance(
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                )
 
                 // Adjust padding to avoid overlap
                 view.setPadding(0, statusBarInsets.top, 0, 0)
@@ -122,6 +136,9 @@ fun SpeakScreen(korean: String, chinese: String) {
                         Toast.makeText(context, "text", Toast.LENGTH_SHORT).show()
                     }
                 }
+
+                reviewApp(context)
+
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -136,7 +153,7 @@ fun SpeakScreen(korean: String, chinese: String) {
             )
         }
 
-        BannerAdView(modifier = Modifier.padding(16.dp))
+        BannerAdView(modifier = Modifier.padding(16.dp).align(Alignment.CenterHorizontally))
 
         InfoRow()
     }
@@ -210,6 +227,26 @@ fun InfoRow() {
 private fun requestTTSData(context: Context) {
     val intent = Intent(ACTION_INSTALL_TTS_DATA)
     context.startActivity(intent)
+}
+
+
+//  앱 리뷰
+private fun reviewApp(context: Context) {
+    val manager = ReviewManagerFactory.create(context)
+    val request: Task<ReviewInfo> = manager.requestReviewFlow()
+    request.addOnCompleteListener { task ->
+        if (task.isSuccessful) {
+            val reviewInfo: ReviewInfo = task.result
+            manager.launchReviewFlow(context as Activity, reviewInfo)
+                .addOnCompleteListener { task1: Task<Void?> ->
+                    if (task1.isSuccessful) {
+                        Log.d("TAG", "Review Success")
+                    }
+                }
+        } else {
+            Log.d("TAG", "Review Error")
+        }
+    }
 }
 
 

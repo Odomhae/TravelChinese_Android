@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowInsets
+import android.view.WindowInsetsController
 import android.widget.ImageButton
 import android.widget.Toast
 import android.window.OnBackInvokedDispatcher
@@ -81,7 +82,14 @@ class MainActivity : ComponentActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) { // Android 15+
             window.decorView.setOnApplyWindowInsetsListener { view, insets ->
                 val statusBarInsets = insets.getInsets(WindowInsets.Type.statusBars())
-                view.setBackgroundColor(getColor(R.color.black))
+                view.setBackgroundColor(getColor(R.color.white))
+
+                // 상태 바 아이콘 색상 변경 (어두운 색상으로 설정)
+                val controller = window.insetsController
+                controller?.setSystemBarsAppearance(
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                )
 
                 // Adjust padding to avoid overlap
                 view.setPadding(0, statusBarInsets.top, 0, 0)
@@ -93,7 +101,7 @@ class MainActivity : ComponentActivity() {
         }
 
         // 광고 초기화
-     //   initializeAds() // todo 250331
+        initializeAds()
 
         setContent {
             TravelChineseTheme {

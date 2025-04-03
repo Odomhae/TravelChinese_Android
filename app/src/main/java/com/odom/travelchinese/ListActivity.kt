@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowInsets
+import android.view.WindowInsetsController
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
@@ -31,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -48,7 +50,14 @@ class ListActivity : ComponentActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) { // Android 15+
             window.decorView.setOnApplyWindowInsetsListener { view, insets ->
                 val statusBarInsets = insets.getInsets(WindowInsets.Type.statusBars())
-                view.setBackgroundColor(getColor(R.color.black))
+                view.setBackgroundColor(getColor(R.color.white))
+
+                // 상태 바 아이콘 색상 변경 (어두운 색상으로 설정)
+                val controller = window.insetsController
+                controller?.setSystemBarsAppearance(
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                )
 
                 // Adjust padding to avoid overlap
                 view.setPadding(0, statusBarInsets.top, 0, 0)
@@ -87,7 +96,7 @@ fun ListScreen(koreanList: Array<String>, chineseList: Array<String>) {
 
         // ListView를 LazyColumn으로 변환
         LazyColumn(
-            modifier = Modifier.wrapContentHeight(),
+            modifier = Modifier.wrapContentHeight().navigationBarsPadding(),
             verticalArrangement = Arrangement.spacedBy(2.dp)
         ) {
             items(koreanList.size) { position ->

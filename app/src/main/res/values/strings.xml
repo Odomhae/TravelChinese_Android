@@ -16,6 +16,10 @@
     <string name="TEST_fullscreen_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
     <string name="TEST_admob_app_id"> ca-app-pub-3940256099942544~3347511713</string>
 
+    <string name="REAL_banner_ad_unit_id">ca-app-pub-6729344454320392/9357164584</string>
+    <string name="REAL_fullscreen_ad_unit_id">ca-app-pub-6729344454320392/9892113526</string>
+    <string name="REAL_admob_app_id">ca-app-pub-6729344454320392~5238790326</string>
+
     <!--<string name="banner_ad_unit_id">ca-app-pub-6320276762321427/4866966147</string>-->
     <string name="side_menu_1">영사콜센터</string>
     <string name="side_menu_2">여행경보발령현황</string>
